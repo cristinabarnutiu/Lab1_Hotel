@@ -7,7 +7,7 @@ public class Room {
     private int days;
     private int persons;
     private String feedback;
-    private boolean isFree;
+    private boolean available;
 
     @Override
     public String toString() {
@@ -18,7 +18,7 @@ public class Room {
                 ", days=" + days +
                 ", persons=" + persons +
                 ", feedback='" + feedback + '\'' +
-                ", isFree=" + isFree +
+                ", available=" + available +
                 '}';
     }
 
@@ -28,17 +28,17 @@ public class Room {
         this.roomNumber = roomNumber;
         this.persons = persons;
         this.days = days;
-        isFree = false; //default value, assignement not necessary
+        available = false; //default value, assignment not necessary
     }
 
-    public Room(int id, int roomNumber, int rating, int days, int persons, String feedback, boolean isFree) {
+    public Room(int id, int roomNumber, int rating, int days, int persons, String feedback, boolean available) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.rating = rating;
         this.days = days;
         this.persons = persons;
         this.feedback = feedback;
-        this.isFree = isFree;
+        this.available = available;
     }
 
     public int getId() {
@@ -89,11 +89,12 @@ public class Room {
         this.feedback = feedback;
     }
 
-    public boolean isFree() {
-        return isFree;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setFree(boolean free) {
-        isFree = free;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
+
 }

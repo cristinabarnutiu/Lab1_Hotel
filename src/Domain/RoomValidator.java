@@ -16,11 +16,11 @@ public class RoomValidator {
         }
 
         //
-        if (roomNumber.isFree() && (roomNumber.getRating() < 1 || roomNumber.getRating() > 5)) {
+        if (roomNumber.isAvailable() && (roomNumber.getRating() < 1 || roomNumber.getRating() > 5)) {
             throw new RuntimeException("Rating must be between 1 and 5!");
         }
 
-        if (roomNumber.isFree() &&  roomNumber.getFeedback() == null) {
+        if (roomNumber.isAvailable() &&  roomNumber.getFeedback() == null) {
             throw new RuntimeException("Feedback cannot be null!");
         }
 

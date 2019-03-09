@@ -31,7 +31,7 @@ public class Hotel {
     Room roomIn = new Room (id, persons, roomNumber, days);
     List<Room> rooms = repository.getAll();
     for (Room r : rooms){
-       if (r.getRoomNumber() == roomNumber && !r.isFree()) {
+       if (r.getRoomNumber() == roomNumber && !r.isAvailable()) {
            throw new RuntimeException("Room is occupied!");
        }
     }
@@ -48,14 +48,14 @@ public class Hotel {
         Room roomOut = null;
         List<Room> rooms = repository.getAll();
         for (Room r : rooms) {
-            if (r.getRoomNumber() == roomNumber && !r.isFree()) {
+            if (r.getRoomNumber() == roomNumber && !r.isAvailable()) {
                 roomOut = r;
             }
         }
    if (roomOut != null){
        roomOut.setFeedback(feedback);
        roomOut.setRating(rating);
-       roomOut.setFree(true);
+       roomOut.setAvailable(true);
        repository.update(roomOut);
    } else {
        throw new RuntimeException("There is no checkin for that roomNumber!");
@@ -67,7 +67,7 @@ public class Hotel {
         Map<Integer, List<Double>> ratingForRoomNumber = new HashMap<>();
 
         for (Room r : repository.getAll()) {
-            if (r.isFree()) {
+            if (r.isAvailable()) {
                 int roomNumber = r.getRoomNumber();
                 double rating = r.getRating();
 
